@@ -11,10 +11,10 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: NodeTool@0
+- task: UseNode@1
   inputs:
-    versionSpec: '21.x'
-  displayName: 'Install Node.js'
+    version: '21.x'
+  displayName: 'Install Node.js 21.x'
 
 - script: |
     npm install
