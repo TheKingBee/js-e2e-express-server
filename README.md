@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/liveoa914/CSCP/_apis/build/status%2FTheKingBee.js-e2e-express-server?branchName=main)](https://dev.azure.com/liveoa914/CSCP/_build/latest?definitionId=5&branchName=main)
 ---
 page_type: sample
 languages:
