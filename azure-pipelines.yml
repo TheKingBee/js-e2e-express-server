@@ -9,30 +9,33 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
+jobs:
+- job: Node
+  steps:
+  - task: UseNode@1
+    inputs:
+      version: '20.x'
+    displayName: 'Install Node.js'
 
-steps:
-- task: UseNode@1
-  inputs:
-    version: '20.x'
-  displayName: 'Install Node.js'
+  - script: |
+      npm install
+      npm run build
+    displayName: 'npm install and build'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+  - script: |
+      npm run test
+    displayName: 'Running tests'
 
-- script: |
-    npm run test
-  displayName: 'Running tests'
-
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your commands here
-      
-      echo 'Hello world'
-      whoami
-      pwd
-      ls -la
-    displayName: "Hello World in Bash"
+- job: RunCommands
+  steps:
+  - task: Bash@3
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your commands here
+        
+        echo 'Hello world'
+        whoami
+        pwd
+        ls -la
+      displayName: "Hello World in Bash"
