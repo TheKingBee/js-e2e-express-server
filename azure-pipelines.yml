@@ -18,7 +18,7 @@ strategy:
   maxParallel: 3
 
 pool:
-  vmImage $(imageName)
+  vmImage: $(imageName)
 
 steps:
 - task: UseNode@1
