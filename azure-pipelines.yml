@@ -6,17 +6,20 @@
 trigger:
 - main
 - develop
+jobs:
+  - job: Linux
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps: 
+      - template: templates/include-npm-steps.yml
+  - job: Windows
+    pool:
+      vmImage: 'windows-latest'
+    steps: 
+      - template: templates/include-npm-steps.yml
+  - job: Mac
+    pool:
+      vmImage: 'macOS-latest'
+    steps: 
+      - template: templates/include-npm-steps.yml
 
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- task: UseNode@1
-  inputs:
-    version: '21.x'
-  displayName: 'Install Node.js 21.x'
-
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
